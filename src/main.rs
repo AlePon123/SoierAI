@@ -1,7 +1,6 @@
 mod commands;
 use commands::{
     ball::*,
-    
 };
 
 use serenity::{
@@ -51,6 +50,7 @@ impl EventHandler for Handler {
 #[group]
 #[commands(ball,)]
 struct General;
+
 #[tokio::main]
 async fn main() {
     let token = &TOKEN;
