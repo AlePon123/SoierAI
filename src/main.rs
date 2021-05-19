@@ -14,7 +14,7 @@ use serenity::{
 
 
 
-const TOKEN: &str = "ODI5Nzg0NDgxNTA1MzQ1NjI5.YG9LBQ.ll80rQoWTqTdI8tis14Kirwxq6Y";
+const TOKEN: &str = "DISCORD_BOT_TOKEN";
 
 struct Handler;
 
