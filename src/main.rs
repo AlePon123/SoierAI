@@ -35,7 +35,7 @@ impl EventHandler for Handler {
             || msg.content == "!Долбоёб"
             || msg.content == "!долбоёб"
         {
-            if let Err(why) = msg.channel_id.say(&ctx.http,format!("А я Sorreta , приятно познакомится <:RoflanEbalo:830110707046940682>")).await{
+            if let Err(why) = msg.channel_id.say(&ctx.http,format!("А я Soier , приятно познакомится <:RoflanEbalo:830110707046940682>")).await{
                 println!("Error giving message: {:?}", msg);
             }
         }
