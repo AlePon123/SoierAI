@@ -42,7 +42,7 @@ pub async fn ball(ctx: &Context, msg: &Message) -> CommandResult {
             "шар сказал... это не точно",
             "шар сказал... это слишком сложно",
             "шар сказал... это точно",
-            "шар сказал... это точно"
+            "шар сказал... это точно" 
         ];
 
         let random = range.gen_range(0..ball_vars.len());
