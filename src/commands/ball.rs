@@ -9,8 +9,7 @@ use serenity::framework::standard::{
 
 #[command]
 pub async fn ball(ctx: &Context, msg: &Message) -> CommandResult {
-    let result = || {
-        
+    let result = || {        
         let mut range = rand::thread_rng();
         
         let ball_vars = [
