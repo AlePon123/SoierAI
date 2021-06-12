@@ -14,12 +14,12 @@ pub async fn calceval(ctx: &Context, msg: &Message, mut args: Args) -> CommandRe
         Ok(arg) => match eval(arg.as_str()) {
             Ok(res) => result = res.to_string(),
             Err(why) => {
-                msg.reply(&ctx.http, format!("Error: {}",why)).await?;
+                msg.reply(&ctx.http, format!("Error: {}", why)).await?;
                 return Ok(()); 
             },
         }
         Err(why) => {
-            msg.channel_id.say(&ctx.http, format!("Error: {}",why)).await?;
+            msg.channel_id.say(&ctx.http, format!("Error: {}", why)).await?;
             return Ok(());
         }
     }
