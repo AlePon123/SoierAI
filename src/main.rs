@@ -1,19 +1,18 @@
 mod commands;
 use commands::{
     ball::*,
+    eval::*,
 };
-
 use serenity::{
     async_trait,
     client::Client,
     framework::standard::{macros::group, StandardFramework},
-    model::{channel::*, event::ResumedEvent, gateway::Ready, id::GuildId, user::User},
+    model::{
+        channel::*, event::ResumedEvent, gateway::Ready, guild::Member, id::GuildId, user::User,
+    },
     prelude::{Context, EventHandler},
 };
-
-
-
-const TOKEN: &str = "DISCORD_BOT_TOKEN";
+const TOKEN: &str = "Discord_bot_token";
 
 struct Handler;
 
@@ -22,19 +21,35 @@ impl EventHandler for Handler {
     async fn ready(&self, _: Context, ready: Ready) {
         println!("{} is ready", ready.user.name);
     }
+
     async fn resume(&self, _: Context, _: ResumedEvent) {
         println!("Resumed");
     }
+
     async fn guild_ban_addition(&self, _ctx: Context, _guild_id: GuildId, _banned_user: User) {
         println!("{} was banned", _banned_user);
     }
+
+    async fn guild_member_addition(&self, ctx: Context, guild_id: GuildId, mut new_member: Member) {
+        println!("{} join on server", new_member);
+        if let Err(why) = new_member.add_role(&ctx.http, 847210252168724489).await {
+            println!("Error giving role to new member in guild {}", guild_id);
+        }
+    }
+
     async fn message(&self, ctx: Context, msg: Message) {
         if msg.content == "!Долбаёб"
             || msg.content == "!долбаёб"
             || msg.content == "!Долбоёб"
             || msg.content == "!долбоёб"
         {
-            if let Err(why) = msg.channel_id.say(&ctx.http,format!("А я Soier , приятно познакомится <:RoflanEbalo:830110707046940682>")).await {
+            if let Err(why) = msg
+                .reply(
+                    &ctx.http,
+                    format!("А я Soier , приятно познакомится <:RoflanEbalo:830110707046940682>"),
+                )
+                .await
+            {
                 println!("Error giving message: {:?}", msg);
             }
         }
@@ -48,9 +63,8 @@ impl EventHandler for Handler {
     }
 }
 #[group]
-#[commands(ball,)]
+#[commands(ball,calceval)]
 struct General;
-
 #[tokio::main]
 async fn main() {
     let token = &TOKEN;
