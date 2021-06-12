@@ -8,7 +8,8 @@ use evalexpr::eval;
 #[command]
 pub async fn calceval(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
     let evalargs = args.parse::<String>();
-    let result: String;  
+    let result: String; 
+ 
     match evalargs {
         Ok(arg) => match eval(arg.as_str()) {
             Ok(res) => result = res.to_string(),
@@ -22,6 +23,7 @@ pub async fn calceval(ctx: &Context, msg: &Message, mut args: Args) -> CommandRe
             return Ok(());
         }
     }
+    
     msg.reply(&ctx.http, result).await?;
 
     Ok(())
