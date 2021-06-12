@@ -11,11 +11,12 @@ pub async fn calceval(ctx: &Context, msg: &Message, mut args: Args) -> CommandRe
     let result: String; 
  
     match evalargs {
-        Ok(arg) => match eval(arg.as_str()) {
-            Ok(res) => result = res.to_string(),
-            Err(why) => {
-                msg.reply(&ctx.http, format!("Error: {}", why)).await?;
-                return Ok(()); 
+        Ok(arg) =>
+            match eval(arg.as_str()) {
+                Ok(res) => result = res.to_string(),
+                Err(why) => {
+                    msg.reply(&ctx.http, format!("Error: {}", why)).await?;
+                    return Ok(()); 
             },
         }
         Err(why) => {
