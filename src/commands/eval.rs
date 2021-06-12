@@ -18,7 +18,7 @@ pub async fn calceval(ctx: &Context, msg: &Message, mut args: Args) -> CommandRe
                     msg.reply(&ctx.http, format!("Error: {}", why)).await?;
                     return Ok(()); 
                 },
-        }
+            }
         Err(why) => {
             msg.channel_id.say(&ctx.http, format!("Error: {}", why)).await?;
             return Ok(());
