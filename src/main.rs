@@ -15,7 +15,7 @@ use serenity::{
     },
     prelude::{Context, EventHandler},
 };
-const TOKEN: &str = "ODI5Nzg0NDgxNTA1MzQ1NjI5.YG9LBQ.7tlexE3sXbsaFg7DAspNQjyO_Z8";
+const TOKEN: &str = "DISCORD_BOT_TOKEN";
 
 struct Handler;
 
